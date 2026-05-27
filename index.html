@@ -6,6 +6,25 @@
     <title>Sistema de Gestión de Inventarios</title>
     </head>
     <body>
+        // Contenedor principal
+        <div class="container">
+            <h1>Sistema de Gestión de Inventarios</h1>
+            // Formulario para agregar productos
+            <form id="productForm">
+                <input type="text" id="productName" placeholder="Nombre del producto" required>
+                <input type="number" id="productQuantity" placeholder="Cantidad" required>
+                <button type="submit">Agregar Producto</button>
+            </form>
+            // Tabla para mostrar los productos
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>Nombre del Producto</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         <script src="Sistema.js"></script>
     </body>
 </html>
