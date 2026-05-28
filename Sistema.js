@@ -99,3 +99,4 @@ function generarFactura() {
     // Vaciamos el carrito (lo dejamos en tamaño cero) para dejarlo limpio para la siguiente venta
     carrito.length = 0;
 }
+
