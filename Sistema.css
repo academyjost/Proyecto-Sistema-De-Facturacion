@@ -7,7 +7,7 @@ body {
     padding: 40px;
 }
 
-/* contenedor general */
+/* contenedor general de la pagina al abrir*/
 .contenedorPrincipal{
     display: flex;
 }
@@ -34,7 +34,7 @@ form {
     text-align: center;
 }
 
-/* Cajas de texto limpias y estándar */
+/* Cajas de texto */
 input {
     padding: 10px;
     margin-right: 5px;
@@ -121,7 +121,7 @@ section.activa {
 }
 
 .pregunta{
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
