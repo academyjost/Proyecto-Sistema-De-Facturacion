@@ -17,14 +17,13 @@
                 <button onclick="mostrarSeccion('inventario')">Inventario</button>
                 <button onclick="mostrarSeccion('compras')">Compras</button>
                 <button onclick="mostrarSeccion('ventas')">Ventas</button>
-                <button onclick="mostrarSeccion('test')">Test</button>
             </nav>
         </div>
 
         <!-- CONTENIDO -->
         <div class="contenido">
 
-            <h1>Sistema de Facturación (Apegado al SRI)</h1>
+            <h1>Sistema de Facturación </h1>
 
             <section id="clientes" class="activa">
                 <h2>1. Cliente</h2>
@@ -69,142 +68,7 @@
                 <h3 id="pantallaFactura">
                     Aún no hay facturas generadas.
                 </h3>
-
-                <form id="Preguntas">
-                    <h2>¿Desea generar otra factura?</h2>
-                    <button type="button" onclick="reiniciarSistema()">Sí</button>
-                    <button type="button" onclick="mostrarMensaje('Gracias por usar el sistema de facturación.')">No</button>
-                </form>
-
-                <h3>Emitir Comprobante</h3>
-
-                <button type="button" onclick="generarFactura()">
-                    Generar Factura SRI
-                </button>
-
-                <h2>Resultado de la Factura:</h2>
-
-                <h3 id="pantallaFactura">
-                    Aún no hay facturas generadas.
-                </h3>
-                
             </section>
-           
-            <section id="test">
-
-    <h2>Test de Facturación Electrónica</h2>
-
-    <form id="formTest">
-
-        <!-- PREGUNTA 1 -->
-        <div class="pregunta">
-            <h3>1. ¿Qué significa IVA?</h3>
-
-            <label>
-                <input type="radio" name="p1" value="1">
-                Impuesto al Valor Agregado
-            </label>
-
-            <label>
-                <input type="radio" name="p1" value="0">
-                Impuesto de Ventas Anuales
-            </label>
-
-            <label>
-                <input type="radio" name="p1" value="0">
-                Instituto de Valores
-            </label>
-        </div>
-
-        <!-- PREGUNTA 2 -->
-        <div class="pregunta">
-            <h3>2. ¿Qué institución controla el IVA en Ecuador?</h3>
-
-            <label>
-                <input type="radio" name="p2" value="0">
-                Municipio
-            </label>
-
-            <label>
-                <input type="radio" name="p2" value="1">
-                SRI
-            </label>
-
-            <label>
-                <input type="radio" name="p2" value="0">
-                Policía
-            </label>
-        </div>
-
-        <!-- PREGUNTA 3 -->
-        <div class="pregunta">
-            <h3>3. ¿Cuál de estos productos tiene tarifa 0%?</h3>
-
-            <label>
-                <input type="radio" name="p3" value="0">
-                Celular
-            </label>
-
-            <label>
-                <input type="radio" name="p3" value="1">
-                Leche
-            </label>
-
-            <label>
-                <input type="radio" name="p3" value="0">
-                Computadora
-            </label>
-        </div>
-
-        <!-- PREGUNTA 4 -->
-        <div class="pregunta">
-            <h3>4. ¿Qué calcula primero una factura?</h3>
-
-            <label>
-                <input type="radio" name="p4" value="0">
-                IVA
-            </label>
-
-            <label>
-                <input type="radio" name="p4" value="1">
-                Subtotal
-            </label>
-
-            <label>
-                <input type="radio" name="p4" value="0">
-                Descuento
-            </label>
-        </div>
-
-        <!-- PREGUNTA 5 -->
-        <div class="pregunta">
-            <h3>5. ¿Qué reemplaza la facturación electrónica?</h3>
-
-            <label>
-                <input type="radio" name="p5" value="1">
-                Facturas físicas
-            </label>
-
-            <label>
-                <input type="radio" name="p5" value="0">
-                Dinero en efectivo
-            </label>
-
-            <label>
-                <input type="radio" name="p5" value="0">
-                Tarjetas bancarias
-            </label>
-        </div>
-
-        <button type="button" onclick="calificarTest()">
-            Calificar Test
-        </button>
-
-    </form>
-
-    <h2 id="resultadoTest"></h2>
-
-</section>
 
         </div>
 
