@@ -68,6 +68,25 @@
                 <h3 id="pantallaFactura">
                     Aún no hay facturas generadas.
                 </h3>
+
+                <form id="Preguntas">
+                    <h2>¿Desea generar otra factura?</h2>
+                    <button type="button" onclick="reiniciarSistema()">Sí</button>
+                    <button type="button" onclick="mostrarMensaje('Gracias por usar el sistema de facturación.')">No</button>
+                </form>
+
+                <h3>Emitir Comprobante</h3>
+
+                <button type="button" onclick="generarFactura()">
+                    Generar Factura SRI
+                </button>
+
+                <h2>Resultado de la Factura:</h2>
+
+                <h3 id="pantallaFactura">
+                    Aún no hay facturas generadas.
+                </h3>
+                
             </section>
 
         </div>
