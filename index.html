@@ -4,40 +4,78 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="Sistema.css">
     <title>Sistema de Facturación SRI</title>
+    <script src="utilitarios.js"></script>
 </head>
 <body>
-    <h1>Sistema de Facturación (Apegado al SRI)</h1>
 
-    <h2>1. Registrar Cliente</h2>
-    <form id="formCliente">
-        <input type="text" id="nombreCli" placeholder="Nombre completo" required>
-        <input type="text" id="cedulaCli" placeholder="Cédula o RUC (SRI)" required>
-        <button type="button" onclick="guardarCliente()">Guardar Cliente</button>
-    </form>
+    <div class="contenedorPrincipal">
 
-    <h2>2. Registrar Inventario</h2>
-    <form id="formInventario">
-        <input type="text" id="nombreProd" placeholder="Nombre del producto" required>
-        <input type="number" id="precioProd" placeholder="Precio Unitario" required>
-        <input type="number" id="stockProd" placeholder="Cantidad en stock" required>
-        <button type="button" onclick="guardarProducto()">Agregar al Inventario</button>
-    </form>
+        <!-- BARRA LATERAL -->
+        <div class="cajaNavegacion">
+            <nav>
+                <button onclick="mostrarSeccion('clientes')">Clientes</button>
+                <button onclick="mostrarSeccion('inventario')">Inventario</button>
+                <button onclick="mostrarSeccion('compras')">Compras</button>
+                <button onclick="mostrarSeccion('ventas')">Ventas</button>
+            </nav>
+        </div>
 
-    <h2>3. Punto de Venta</h2>
-    <h3>Añadir producto a la compra</h3>
-    <form id="formVenta">
-        <input type="text" id="ventaProd" placeholder="Nombre del producto a vender" required>
-        <input type="number" id="ventaCant" placeholder="Cantidad a vender" required>
-        <button type="button" onclick="agregarAlCarrito()">Agregar al carrito</button>
-    </form>
+        <!-- CONTENIDO -->
+        <div class="contenido">
 
-    <h3>Emitir Comprobante</h3>
-    <button type="button" onclick="generarFactura()">Generar Factura SRI</button>
+            <h1>Sistema de Facturación (Apegado al SRI)</h1>
 
-    <h2>Resultado de la Factura:</h2>
-    <h3 id="pantallaFactura">Aún no hay facturas generadas.</h3>
+            <section id="clientes" class="activa">
+                <h2>1. Cliente</h2>
+                <form id="formCliente">
+                    <input type="text" id="nombreCli" placeholder="Nombre completo" required>
+                    <input type="text" id="cedulaCli" placeholder="Cédula o RUC (SRI)" required>
+                    <button type="button" onclick="guardarCliente()">Guardar Cliente</button>
+                </form>
+            </section>
+
+            <section id="inventario" class="activa">
+                <h2>2. Inventario</h2>
+                <form id="formInventario">
+                    <input type="text" id="nombreProd" placeholder="Nombre del producto" required>
+                    <input type="number" id="precioProd" placeholder="Precio Unitario" required>
+                    <input type="number" id="stockProd" placeholder="Cantidad en stock" required>
+                    <button type="button" onclick="guardarProducto()">Agregar al Inventario</button>
+                </form>
+            </section>
+
+            <section id="compras" class="activa"></section>
+
+            <section id="ventas" class="activa">
+                <h2>3. Punto de Venta</h2>
+
+                <h3>Añadir producto a la compra</h3>
+
+                <form id="formVenta">
+                    <input type="text" id="ventaProd" placeholder="Nombre del producto a vender" required>
+                    <input type="number" id="ventaCant" placeholder="Cantidad a vender" required>
+                    <button type="button" onclick="agregarAlCarrito()">Agregar al carrito</button>
+                </form>
+
+                <h3>Emitir Comprobante</h3>
+
+                <button type="button" onclick="generarFactura()">
+                    Generar Factura SRI
+                </button>
+
+                <h2>Resultado de la Factura:</h2>
+
+                <h3 id="pantallaFactura">
+                    Aún no hay facturas generadas.
+                </h3>
+            </section>
+
+        </div>
+
+    </div>
 
     <script src="Sistema.js"></script>
+
 </body>
 </html>
 
