@@ -130,3 +130,18 @@ function generarFactura() {
     carrito.length = 0;
 }
 
+function calificarTest(){
+
+    let puntaje = 0;
+
+    let respuestas = document.querySelectorAll(
+        'input[type="radio"]:checked'
+    );
+
+    respuestas.forEach(respuesta => {
+        puntaje += parseInt(respuesta.value);
+    });
+
+    document.getElementById("resultadoTest").innerHTML =
+        "Tu calificación es: " + puntaje + " / 5";
+}
