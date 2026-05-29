@@ -7,6 +7,12 @@ body {
     padding: 40px;
 }
 
+/* contenedor general */
+.contenedorPrincipal{
+    display: flex;
+}
+
+
 /* Estilos del título: Sobrio y centrado */
 h1 {
     color: #2c3e50;
@@ -82,4 +88,34 @@ th {
 /* Filas intercaladas */
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+section {
+    display: none;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    margin-top: 20px;
+    border-radius: 8px;
+ }
+
+section.activa {
+     display: block;
+ }
+
+.cajaNavegacion{
+    width: 220px;
+    height: 100vh;
+    background-color: #1e293b;
+
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* organizar botones verticalmente */
+.cajaNavegacion nav{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
