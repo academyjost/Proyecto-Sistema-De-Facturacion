@@ -24,20 +24,6 @@ function mostrarSeccion(id) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Función para guardar el cliente (El SRI siempre pide nombre y RUC/Cédula)
 function guardarCliente() {
     const nombre = document.getElementById("nombreCli").value;
@@ -108,25 +94,31 @@ function generarFactura() {
     const iva = subtotal * 0.15;
     const totalFinal = subtotal + iva;
 
-    // Armamos el texto de la factura simulando el formato de numeración del SRI
-    const textoFacturacion = 
-        "Factura N° 001-001-0000000" + numeroComprobante + 
-        " | Cliente: " + clienteActual.nombre + " | RUC/CI: " + clienteActual.cedula + 
-        " | Detalle: " + detalleDeCompra + 
-        " | Subtotal: $" + subtotal + 
-        " | IVA (15%): $" + iva + 
-        " | TOTAL A PAGAR: $" + totalFinal;
+    // ¡Aquí está la mejora! En lugar de texto plano, creamos una estructura HTML
+    // Usamos las comillas invertidas (backticks ` `) que nos permiten mezclar texto y variables fácilmente
+    const htmlFactura = `
+        <div style="text-align: left; font-size: 16px;">
+            <p><strong>Factura N°:</strong> 001-001-0000000${numeroComprobante}</p>
+            <p><strong>Cliente:</strong> ${clienteActual.nombre}</p>
+            <p><strong>RUC/CI:</strong> ${clienteActual.cedula}</p>
+            <hr style="border-color: #334155;">
+            <p><strong>Detalle:</strong> ${detalleDeCompra}</p>
+            <p><strong>Subtotal:</strong> $${subtotal.toFixed(2)}</p>
+            <p><strong>IVA (15%):</strong> $${iva.toFixed(2)}</p>
+            <h3 style="color: #38bdf8;">TOTAL A PAGAR: $${totalFinal.toFixed(2)}</h3>
+        </div>
+    `;
 
-    // Lo mostramos en la pantalla inyectando el texto en nuestro h3
-    document.getElementById("pantallaFactura").innerText = textoFacturacion;
+    // Lo mostramos en la pantalla inyectando el HTML (ya no usamos innerText, sino innerHTML)
+    document.getElementById("pantallaFactura").innerHTML = htmlFactura;
 
     // Guardamos la factura completa en nuestra base de datos de facturas
-    facturas.push(textoFacturacion);
+    facturas.push(htmlFactura);
 
-    // Aumentamos el número para que la siguiente factura sea la 2, luego la 3, etc.
-    numeroComprobante = numeroComprobante + 1;
+    // Aumentamos el número de comprobante
+    numeroComprobante++;
 
-    // Vaciamos el carrito (lo dejamos en tamaño cero) para dejarlo limpio para la siguiente venta
+    // Vaciamos el carrito
     carrito.length = 0;
 }
 
