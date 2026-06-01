@@ -154,7 +154,7 @@ section.activa {
     border-left: 4px solid #38bdf8;
     color: #f8fafc;
 }
-.contenido {
+.contenido {                          
     flex: 1;                  /* Hace que el contenido tome todo el espacio restante al lado del menú */
     height: 100%;             /* Se adapta al 100% de la altura de tu contenedor principal */
     overflow-y: auto;         /* ¡Aquí está la magia! Activa el scroll vertical solo cuando sea necesario */
