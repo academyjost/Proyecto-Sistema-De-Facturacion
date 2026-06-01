@@ -137,3 +137,6 @@ function calificarTest(){
     document.getElementById("resultadoTest").innerHTML =
         "Tu calificación es: " + puntaje + " / 5";
 }
+// Esta funcion nos ayuda a que la apgina empieze vacia
+window.onload = function() {
+};

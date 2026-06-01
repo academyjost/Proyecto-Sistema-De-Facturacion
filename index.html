@@ -18,6 +18,7 @@
                 <button onclick="mostrarSeccion('compras')">Compras</button>
                 <button onclick="mostrarSeccion('ventas')">Ventas</button>
                 <button onclick="mostrarSeccion('test')">Test</button>
+                <button onclick="mostrarSeccion('detalles-del-sistema')">Detalles del Sistema</button>
             </nav>
         </div>
 
@@ -26,7 +27,23 @@
 
             <h1>Sistema de Facturación (Apegado al SRI)</h1>
 
-            <section id="clientes" class="activa">
+            <section id="detalles-del-sistema" >
+                <h2>Detalles del Sistema</h2>
+                <p>
+                    Un sistema de facturación es un programa informático que se encarga de gestionar las ventas de un negocio de forma automática: toma los datos del cliente, 
+                    calcula los precios, suma los impuestos (como el IVA) y genera el comprobante o factura legal (que hoy en día suele ser electrónica). En palabras simples, 
+                    es el motor digital que transforma una compra en un documento oficial, asegurando que el negocio lleve su contabilidad en orden y le avise al gobierno que 
+                    la venta se realizó correctamente.
+                </p>
+                <h2>Objetivo de la página</h2>
+                <p>
+                    El objetivo de esta pagina es ofrecer un sistema mas facil y rapido de facturacion, que se apegue a las normas del SRI,
+                    para que los usuarios puedan gesitonar mejor sus ventas, clientes e inventarios, y puedan generar facturas electronicas al istante,
+                    ademas de ofrecer un test para que los usuarios puedan evaluar sus conocimientos sobre facturacion electronica y el SRI.
+                </p>
+            </section>
+
+            <section id="clientes" >
                 <h2>1. Cliente</h2>
                 <form id="formCliente">
                     <input type="text" id="nombreCli" placeholder="Nombre completo" required>
@@ -35,7 +52,7 @@
                 </form>
             </section>
 
-            <section id="inventario" class="activa">
+            <section id="inventario" >
                 <h2>2. Inventario</h2>
                 <form id="formInventario">
                     <input type="text" id="nombreProd" placeholder="Nombre del producto" required>
@@ -45,10 +62,17 @@
                 </form>
             </section>
 
-            <section id="compras" class="activa"></section>
+            <section id="compras" >
+                <h2>3. Compras</h2>
+                <form id="formCompra">
+                    <input type="text" id="compraProd" placeholder="Nombre del producto a comprar" required>
+                    <input type="number" id="compraCant" placeholder="Cantidad a comprar" required>
+                    <button type="button" onclick="agregarCompra()">Registrar Compra</button>
+                </form>
+            </section>
 
-            <section id="ventas" class="activa">
-                <h2>3. Punto de Venta</h2>
+            <section id="ventas" >
+                <h2>4. Punto de Venta</h2>
 
                 <h3>Añadir producto a la compra</h3>
 
