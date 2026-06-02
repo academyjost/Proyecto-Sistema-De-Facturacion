@@ -98,10 +98,6 @@ th {
     font-weight: normal;
 }
 
-/* Filas intercaladas */
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
 
 section {
     display: none;
@@ -160,4 +156,23 @@ section.activa {
     overflow-y: auto;         /* ¡Aquí está la magia! Activa el scroll vertical solo cuando sea necesario */
     padding: 30px;            /* Espaciado interno para que el texto no pegue con los bordes */
     box-sizing: border-box;   /* Evita que el padding altere el tamaño total de la caja */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #0A2A66;
+    color: white;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid white;
+    color: white;
+}
+
+th {
+    background-color: #081f4d;
+    color: white;
 }
