@@ -124,17 +124,17 @@ function generarFactura() {
 
 function calificarTest(){
 
-    let puntaje = 0;
+    let puntaje = 0; //variable para guardar el puntaje
 
-    let respuestas = document.querySelectorAll(
+    let respuestas = document.querySelectorAll(  //variable que guarda la busqueda de los elementos radio
         'input[type="radio"]:checked'
     );
 
-    respuestas.forEach(respuesta => {
-        puntaje += parseInt(respuesta.value);
+    respuestas.forEach(respuesta => {  //recorre todos los elementos 
+        puntaje += parseInt(respuesta.value); //acumula los puntos
     });
 
-    document.getElementById("resultadoTest").innerHTML =
+    document.getElementById("resultadoTest").innerHTML = //modifica el html para mostrar la calificacion
         "Tu calificación es: " + puntaje + " / 5";
 }
 // Esta funcion nos ayuda a que la apgina empieze vacia
