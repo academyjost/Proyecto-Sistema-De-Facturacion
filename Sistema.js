@@ -63,6 +63,8 @@ function pintarClientes() {
 
 }
 
+
+
 // Función para meter productos a nuestro inventario
 function guardarProducto() {
     const nombre = document.getElementById("nombreProd").value;

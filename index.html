@@ -15,7 +15,6 @@
             <nav>
                 <button onclick="mostrarSeccion('clientes')">Clientes</button>
                 <button onclick="mostrarSeccion('inventario')">Inventario</button>
-                <button onclick="mostrarSeccion('compras')">Compras</button>
                 <button onclick="mostrarSeccion('ventas')">Ventas</button>
                 <button onclick="mostrarSeccion('Pagina-de-Estudio')">Pagina de Estudio</button>
             </nav>
@@ -507,7 +506,7 @@
                 </thead>
                 <tbody id="tablaClientes">
                 </tbody>
-</table>
+                </table>
 
             </section>
 
@@ -519,15 +518,19 @@
                     <input type="number" id="precioProd" placeholder="Precio Unitario" required>
                     <button type="button" onclick="guardarProducto()">Agregar al Inventario</button>
                 </form>
-            </section>
 
-            <section id="compras" >
-                <h2>3. Compras</h2>
-                <form id="formCompra">
-                    <input type="text" id="compraProd" placeholder="Nombre del producto" required>
-                    <input type="number" id="compraCant" placeholder="Cantidad" required>
-                    <button type="button" onclick="agregarCompra()">Registrar Compra</button>
-                </form>
+                <table>
+                 <thead>
+                     <tr>
+                         <th>Producto</th>
+                        <th>Stock</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProductos">
+                </tbody>
+                </table>
+
             </section>
 
             <section id="ventas" >
