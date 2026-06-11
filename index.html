@@ -491,8 +491,9 @@
             <section id="clientes" >
                 <h2>1. Cliente</h2>
                 <form id="formCliente">
-                    <input type="text" id="nombreCli" placeholder="Nombre completo" required>
-                    <input type="text" id="cedulaCli" placeholder="Cédula o RUC (SRI)" required>
+                    <input type="text" id="cedulaCli" placeholder="Cédula o RUC" required>
+                    <input type="text" id="nombreCli" placeholder="Nombre" required>
+                    <input type="text" id="apellidoCli" placeholder="Apellido" required>
                     <button type="button" onclick="guardarCliente()">Guardar Cliente</button>
                 </form>
             </section>
@@ -501,8 +502,8 @@
                 <h2>2. Inventario</h2>
                 <form id="formInventario">
                     <input type="text" id="nombreProd" placeholder="Nombre del producto" required>
-                    <input type="number" id="precioProd" placeholder="Precio Unitario" required>
                     <input type="number" id="stockProd" placeholder="Cantidad en stock" required>
+                    <input type="number" id="precioProd" placeholder="Precio Unitario" required>
                     <button type="button" onclick="guardarProducto()">Agregar al Inventario</button>
                 </form>
             </section>
@@ -510,8 +511,8 @@
             <section id="compras" >
                 <h2>3. Compras</h2>
                 <form id="formCompra">
-                    <input type="text" id="compraProd" placeholder="Nombre del producto a comprar" required>
-                    <input type="number" id="compraCant" placeholder="Cantidad a comprar" required>
+                    <input type="text" id="compraProd" placeholder="Nombre del producto" required>
+                    <input type="number" id="compraCant" placeholder="Cantidad" required>
                     <button type="button" onclick="agregarCompra()">Registrar Compra</button>
                 </form>
             </section>
@@ -522,8 +523,8 @@
                 <h3>Añadir producto a la compra</h3>
 
                 <form id="formVenta">
-                    <input type="text" id="ventaProd" placeholder="Nombre del producto a vender" required>
-                    <input type="number" id="ventaCant" placeholder="Cantidad a vender" required>
+                    <input type="text" id="ventaProd" placeholder="Nombre del producto" required>
+                    <input type="number" id="ventaCant" placeholder="Cantidad" required>
                     <button type="button" onclick="agregarAlCarrito()">Agregar al carrito</button>
                 </form>
 

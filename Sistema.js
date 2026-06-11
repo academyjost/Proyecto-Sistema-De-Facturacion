@@ -26,10 +26,16 @@ function mostrarSeccion(id) {
 
 // Función para guardar el cliente (El SRI siempre pide nombre y RUC/Cédula)
 function guardarCliente() {
-    const nombre = document.getElementById("nombreCli").value;
     const cedula = document.getElementById("cedulaCli").value;
+    const nombre = document.getElementById("nombreCli").value;
+    const apellido = document.getElementById("apellidoCli").value;
+    
 
-    const cliente = { nombre: nombre, cedula: cedula };
+    const cliente = { 
+        cedula: cedula,
+        nombre: nombre,
+        apellido: apellido
+    };
     clientes.push(cliente);
     
     alert("¡Cliente guardado en la base de datos!");
@@ -41,7 +47,11 @@ function guardarProducto() {
     const precio = document.getElementById("precioProd").value;
     const stock = document.getElementById("stockProd").value;
 
-    const producto = { nombre: nombre, precio: precio, stock: stock };
+    const producto = { 
+        nombre: nombre, 
+        precio: precio, 
+        stock: stock 
+    };
     productos.push(producto);
     
     alert("¡Producto agregado al inventario!");
