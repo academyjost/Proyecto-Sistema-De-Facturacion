@@ -39,6 +39,28 @@ function guardarCliente() {
     clientes.push(cliente);
     
     alert("¡Cliente guardado en la base de datos!");
+
+    pintarClientes();
+}
+
+function pintarClientes() {
+
+    let tabla = document.getElementById("tablaClientes");
+
+    tabla.innerHTML = "";
+
+    clientes.forEach(cliente => {
+
+        tabla.innerHTML += `
+            <tr>
+                <td>${cliente.cedula}</td>
+                <td>${cliente.nombre}</td>
+                <td>${cliente.apellido}</td>
+            </tr>
+        `;
+
+    });
+
 }
 
 // Función para meter productos a nuestro inventario
