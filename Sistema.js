@@ -79,6 +79,27 @@ function guardarProducto() {
     productos.push(producto);
     
     alert("¡Producto agregado al inventario!");
+    pintarProductos();
+}
+
+function pintarProductos() {
+
+    let tabla = document.getElementById("tablaProductos");
+
+    tabla.innerHTML = "";
+
+    productos.forEach(productos => {
+
+        tabla.innerHTML += `
+            <tr>
+                <td>${productos.nombre}</td>
+                <td>${productos.precio}</td>
+                <td>${productos.stock}</td>
+            </tr>
+        `;
+
+    });
+
 }
 
 // Función facilita para ir separando lo que el cliente quiere comprar
