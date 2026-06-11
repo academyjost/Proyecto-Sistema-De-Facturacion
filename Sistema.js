@@ -68,8 +68,8 @@ function pintarClientes() {
 // Función para meter productos a nuestro inventario
 function guardarProducto() {
     const nombre = document.getElementById("nombreProd").value;
-    const precio = document.getElementById("precioProd").value;
-    const stock = document.getElementById("stockProd").value;
+    const precio =  Number(document.getElementById("precioProd").value);
+    const stock = Number(document.getElementById("stockProd").value);
 
     const producto = { 
         nombre: nombre, 
@@ -129,12 +129,14 @@ function generarFactura() {
     // Recorremos todo lo que metimos al carrito
     for (const item of carrito) {
         let precioUnitario = 0;
+        const cantidadAVender = Number(item.cantidad);
 
         // Buscamos cuánto cuesta ese producto revisando nuestro inventario
         for (const prod of productos) {
             if (prod.nombre === item.nombre) {
                 precioUnitario = prod.precio;
                 // Opcional: Si quisiéramos ser más pros, aquí le restaríamos la cantidad al stock del inventario
+                prod.stockd = prod.stock - cantidadAVender
             }
         }
 
@@ -175,6 +177,8 @@ function generarFactura() {
 
     // Vaciamos el carrito
     carrito.length = 0;
+    // Pintar los productos para que carguen de nuevo 
+    pintarProductos();
 }
 
 function calificarTest(){
