@@ -1,10 +1,10 @@
 // Usamos const para nuestra "base de datos" porque los arreglos no van a cambiar de tipo,
 // solo les vamos a ir metiendo (push) nueva información adentro.
-const clientes = [];
-const productos = [];
+const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+const productos = JSON.parse(localStorage.getItem("productos")) || [];
 const facturas = [];
-const carrito = []; // Aquí guardamos lo que el cliente va comprando antes de facturar
-
+// Aquí guardamos lo que el cliente va comprando antes de facturar
+const carrito = []; 
 // Esta variable nos ayuda a que el número de factura aumente solito cada vez
 let numeroComprobante = 1;
 
@@ -37,7 +37,10 @@ function guardarCliente() {
         apellido: apellido
     };
     clientes.push(cliente);
-    
+
+    //Guardamos clientes en la lista de navegador
+    localStorage.setItem("clientes", JSON.stringify(clientes))
+    // Alerta en el navegador
     alert("¡Cliente guardado en la base de datos!");
 
     pintarClientes();
@@ -77,6 +80,9 @@ function guardarProducto() {
         stock: stock 
     };
     productos.push(producto);
+
+    //Guardamos lista de productos en el navegador
+    localStorage.setItem("productos",JSON.stringify(productos))
     
     alert("¡Producto agregado al inventario!");
     pintarProductos();
@@ -85,6 +91,8 @@ function guardarProducto() {
 function pintarProductos() {
 
     let tabla = document.getElementById("tablaProductos");
+    //Seguridad por si no se encuentra el elemento
+    if(!tabla) return;
 
     tabla.innerHTML = "";
 
@@ -172,6 +180,9 @@ function generarFactura() {
     // Guardamos la factura completa en nuestra base de datos de facturas
     facturas.push(htmlFactura);
 
+    //guardamos los productos actualizados
+    localStorage.setItem("productos", JSON.stringify(productos));
+
     // Aumentamos el número de comprobante
     numeroComprobante++;
 
@@ -180,6 +191,7 @@ function generarFactura() {
     // Pintar los productos para que carguen de nuevo 
     pintarProductos();
 }
+localStorage.setItem("productos",JSON.stringify(productos))
 
 function calificarTest(){
 
@@ -198,4 +210,7 @@ function calificarTest(){
 }
 // Esta funcion nos ayuda a que la apgina empieze vacia
 window.onload = function() {
+    pintarClientes();
+    pintarProductos();
+    mostrarSeccion();
 };
