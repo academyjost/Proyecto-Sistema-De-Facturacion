@@ -1,3 +1,7 @@
+// Usamos const para nuestra "base de datos" porque los arreglos no van a cambiar de tipo,
+// solo les vamos a ir metiendo (push) nueva información adentro.
+const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+
 function guardarCliente() {
     const cedula = document.getElementById("cedulaCli").value;
     if (cedula.length != 10){
