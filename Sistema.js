@@ -45,7 +45,7 @@ function generarFactura() {
     const clienteActual = clientes[clientes.length - 1];
 
     if (!clienteActual) {
-        alert("¡Oye! Primero tienes que registrar un cliente.");
+        alert(" Porfavor ingrese un usuario.");
         return;
     }
 
