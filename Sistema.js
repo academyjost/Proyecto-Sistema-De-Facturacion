@@ -129,53 +129,70 @@ window.onload = function() {
     cargarDatosPrueba();
     pintarClientes();
     pintarProductos();
+    cargarClientesVenta();
+    cargarProductosVenta();
     mostrarSeccion("clientes");
 };
 
+//Funcion para cargar los datos del archivo datosPrueba.js
 function cargarDatosPrueba(){
 
     let datosCargados = false;
 
     if(localStorage.getItem("clientes") == null){
-
         localStorage.setItem(
             "clientes",
             JSON.stringify(clientesPrueba)
         );
-
         datosCargados = true;
     }
-
     if(localStorage.getItem("productos") == null){
-
         localStorage.setItem(
             "productos",
             JSON.stringify(productosPrueba)
         );
-
         datosCargados = true;
     }
-
     if(datosCargados){
         location.reload();
     }
-
 }
 
-//Function para cargar los datos
+//Function limpiar el local Storage y cargar los datos
 function cargarDatosDemo(){
-
     localStorage.clear();
-
     localStorage.setItem(
         "clientes",
         JSON.stringify(clientesPrueba)
     );
-
     localStorage.setItem(
         "productos",
         JSON.stringify(productosPrueba)
     );
-
     location.reload();
+}
+//Funcion para cargar Clientes de Venta en seleccion 
+function cargarClientesVenta(){
+    let combo = document.getElementById("ventaCliente");
+    combo.innerHTML = "";
+    clientes.forEach(cliente => {
+        combo.innerHTML += `
+            <option value="${cliente.cedula}">
+                ${cliente.nombre} ${cliente.apellido}
+            </option>
+        `;
+    });
+}
+
+//funcion para llenar los productos automaticamente 
+function cargarProductosVenta(){
+    let combo = document.getElementById("ventaProd");
+    combo.innerHTML = "";
+    productos.forEach(producto => {
+        combo.innerHTML += `
+            <option value="${producto.nombre}">
+                ${producto.nombre} - Stock: ${producto.stock}
+            </option>
+        `;
+    });
 }

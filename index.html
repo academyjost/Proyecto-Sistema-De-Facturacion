@@ -115,24 +115,23 @@
             <section id="ventas" >
                 <h2>4. Punto de Venta</h2>
 
-                <h3>Añadir producto a la compra</h3>
+                <h3>Selecciona Cliente y Producto</h3>
 
                 <form id="formVenta" class="formularioGrid">
-
+                
+                <div class="campo">
+                <label>Cliente</label>
+                <select id="ventaCliente"></select>
+                </div>
+                
                 <div class="campo">
                 <label>Producto</label>
-                    <input
-                    type="text"
-                    id="ventaProd"
-                    placeholder="Nombre del producto">
+                <select id="ventaProd"></select>
                 </div>
 
                 <div class="campo">
                 <label>Cantidad</label>
-                    <input
-                    type="number"
-                    id="ventaCant"
-                    placeholder="Cantidad">
+                <input type="number" id="ventaCant" min="1">
                 </div>
 
                 <div class="campoBoton">
