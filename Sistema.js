@@ -107,7 +107,7 @@ function generarFactura() {
     // Pintar los productos para que carguen de nuevo 
     pintarProductos();
 }
-localStorage.setItem("productos",JSON.stringify(productos))
+
 
 function calificarTest(){
 
@@ -134,6 +134,8 @@ window.onload = function() {
 
 function cargarDatosPrueba(){
 
+    let datosCargados = false;
+
     if(localStorage.getItem("clientes") == null){
 
         localStorage.setItem(
@@ -141,6 +143,7 @@ function cargarDatosPrueba(){
             JSON.stringify(clientesPrueba)
         );
 
+        datosCargados = true;
     }
 
     if(localStorage.getItem("productos") == null){
@@ -150,6 +153,29 @@ function cargarDatosPrueba(){
             JSON.stringify(productosPrueba)
         );
 
+        datosCargados = true;
     }
 
+    if(datosCargados){
+        location.reload();
+    }
+
+}
+
+//Function para cargar los datos
+function cargarDatosDemo(){
+
+    localStorage.clear();
+
+    localStorage.setItem(
+        "clientes",
+        JSON.stringify(clientesPrueba)
+    );
+
+    localStorage.setItem(
+        "productos",
+        JSON.stringify(productosPrueba)
+    );
+
+    location.reload();
 }

@@ -1,6 +1,7 @@
 // Usamos const para nuestra "base de datos" porque los arreglos no van a cambiar de tipo,
 // solo les vamos a ir metiendo (push) nueva información adentro.
-const productos = JSON.parse(localStorage.getItem("productos")) || [];
+let productos =
+JSON.parse(localStorage.getItem("productos")) || [];
 
 
 
