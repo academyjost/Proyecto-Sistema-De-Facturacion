@@ -234,3 +234,20 @@ section.activa {
     display: flex;
     align-items: end;
 }
+
+/* ===== APARIENCIA DE SELECCION EN PUNTO DE VENTA ===== */
+select{
+    width:100%;
+    padding:14px;
+    border-radius:8px;
+    border:1px solid #475569;
+    background-color:#0f172a;
+    color:white;
+    font-size:15px;
+    box-sizing:border-box;
+}
+
+select:focus{
+    border-color:#38bdf8;
+    box-shadow:0 0 10px rgba(56,189,248,0.4);
+}

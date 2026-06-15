@@ -10,7 +10,11 @@ function guardarProducto() {
     const nombre = document.getElementById("nombreProd").value;
     const precio =  Number(document.getElementById("precioProd").value);
     const stock = Number(document.getElementById("stockProd").value);
-
+    const existe = productos.find(p => p.nombre.toUpperCase() === nombre.toUpperCase());
+    if(existe){
+        alert("Ya existe un producto con ese nombre");
+        return;
+    }
     const producto = { 
         nombre: nombre, 
         precio: precio, 

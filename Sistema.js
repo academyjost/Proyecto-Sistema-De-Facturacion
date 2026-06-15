@@ -29,18 +29,34 @@ function mostrarSeccion(id) {
 // Función facilita para ir separando lo que el cliente quiere comprar
 function agregarAlCarrito() {
     const nombre = document.getElementById("ventaProd").value;
-    const cantidad = document.getElementById("ventaCant").value;
+    const cantidad = Number(
+        document.getElementById("ventaCant").value);
+    const producto = productos.find(p => p.nombre === nombre);
+    if(!producto){
+        alert("Producto no encontrado");
+        return;
+    }
+    if(cantidad > producto.stock){
+        alert(
+            "No hay suficiente stock de " + producto.nombre
+        );
+        return;
+    }
+    carrito.push({
+        nombre: nombre,
+        cantidad: cantidad
+    });
 
-    const compra = { nombre: nombre, cantidad: cantidad };
-    carrito.push(compra);
-    
-    alert("Producto añadido a la compra actual.");
+    alert("Producto agregado al carrito");
 }
 
-// ¡Aquí viene la magia de la factura!
+// Aqui se encuentra el como se realizara la impresion de la factura
 function generarFactura() {
-    // Para no enredarnos mucho por ahora, agarramos al último cliente que registramos
-    const clienteActual = clientes[clientes.length - 1];
+    // Validacion para poder seleccionar el cliente para imprimir
+    const cedulaSeleccionada =
+    document.getElementById("ventaCliente").value;
+
+    const clienteActual = clientes.find(c => c.cedula === cedulaSeleccionada);
 
     if (!clienteActual) {
         alert(" Porfavor ingrese un usuario.");
@@ -58,10 +74,6 @@ function generarFactura() {
         // Buscamos cuánto cuesta ese producto revisando nuestro inventario
         for (const prod of productos) {
             if (prod.nombre === item.nombre) {
-                if(cantidadAVender > prod.stock){
-            alert("No hay suficiente stock de " + prod.nombre);
-            return;
-        }
                 precioUnitario = prod.precio;
                 // Opcional: Si quisiéramos ser más pros, aquí le restamos la cantidad al stock del inventario
                 prod.stock = prod.stock - cantidadAVender
@@ -133,8 +145,8 @@ window.onload = function() {
     cargarDatosPrueba();
     pintarClientes();
     pintarProductos();
-    cargarClientesVenta();
     cargarProductosVenta();
+    cargarClientesVenta();
     mostrarSeccion("clientes");
 };
 
