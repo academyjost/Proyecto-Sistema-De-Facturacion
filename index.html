@@ -25,6 +25,95 @@
 
             <h1>Sistema de Facturación (Apegado al SRI)</h1>
 
+                 
+
+            <section id="clientes" >
+                <h2>1. Cliente</h2>
+                <form id="formCliente" class="formularioGrid">
+
+            <div class="campo">
+                <label>Cédula</label>
+                <input type="text" id="cedulaCli" placeholder="Ingrese la cédula">
+            </div>
+
+            <div class="campo">
+                <label>Nombre</label>
+                <input type="text" id="nombreCli" placeholder="Ingrese el nombre">
+            </div>
+
+            <div class="campo">
+                <label>Apellido</label>
+                <input type="text" id="apellidoCli" placeholder="Ingrese el apellido">
+            </div>
+
+            <div class="campoBoton">
+                <button type="button" onclick="guardarCliente()">
+                    Guardar Cliente
+                </button>
+            </div>
+
+</form>
+
+                <table>
+                 <thead>
+                     <tr>
+                         <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaClientes">
+                </tbody>
+                </table>
+
+            </section>
+
+            <section id="inventario" >
+                <h2>2. Inventario</h2>
+                <form id="formInventario">
+                    <input type="text" id="nombreProd" placeholder="Nombre del producto" required>
+                    <input type="number" id="stockProd" placeholder="Cantidad en stock" required>
+                    <input type="number" id="precioProd" placeholder="Precio Unitario" required>
+                    <button type="button" onclick="guardarProducto()">Agregar al Inventario</button>
+                </form>
+
+                <table>
+                 <thead>
+                     <tr>
+                         <th>Producto</th>
+                        <th>Stock</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProductos">
+                </tbody>
+                </table>
+
+            </section>
+
+            <section id="ventas" >
+                <h2>4. Punto de Venta</h2>
+
+                <h3>Añadir producto a la compra</h3>
+
+                <form id="formVenta">
+                    <input type="text" id="ventaProd" placeholder="Nombre del producto" required>
+                    <input type="number" id="ventaCant" placeholder="Cantidad" required>
+                    <button type="button" onclick="agregarAlCarrito()">Agregar al carrito</button>
+                </form>
+
+                <h3>Emitir Comprobante</h3>
+
+                <button type="button" onclick="generarFactura()">
+                    Generar Factura SRI
+                </button>
+
+                <h2>Resultado de la Factura:</h2>
+
+                <h3 id="pantallaFactura">
+                    Aún no hay facturas generadas.
+                </h3>
+            </section>
             <section id="Pagina-de-Estudio" >
                 <h1>Detalles del Sistema</h1>
                 <p>
@@ -485,77 +574,7 @@
                 </form>
 
                 <h2 id="resultadoTest"></h2>
-     </section>     
-
-            <section id="clientes" >
-                <h2>1. Cliente</h2>
-                <form id="formCliente">
-                    <input type="text" id="cedulaCli" placeholder="Cédula" required>
-                    <input type="text" id="nombreCli" placeholder="Nombre" required>
-                    <input type="text" id="apellidoCli" placeholder="Apellido" required>
-                    <button type="button" onclick="guardarCliente()">Guardar Cliente</button>
-                </form>
-
-                <table>
-                 <thead>
-                     <tr>
-                         <th>Cédula</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaClientes">
-                </tbody>
-                </table>
-
-            </section>
-
-            <section id="inventario" >
-                <h2>2. Inventario</h2>
-                <form id="formInventario">
-                    <input type="text" id="nombreProd" placeholder="Nombre del producto" required>
-                    <input type="number" id="stockProd" placeholder="Cantidad en stock" required>
-                    <input type="number" id="precioProd" placeholder="Precio Unitario" required>
-                    <button type="button" onclick="guardarProducto()">Agregar al Inventario</button>
-                </form>
-
-                <table>
-                 <thead>
-                     <tr>
-                         <th>Producto</th>
-                        <th>Stock</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <tbody id="tablaProductos">
-                </tbody>
-                </table>
-
-            </section>
-
-            <section id="ventas" >
-                <h2>4. Punto de Venta</h2>
-
-                <h3>Añadir producto a la compra</h3>
-
-                <form id="formVenta">
-                    <input type="text" id="ventaProd" placeholder="Nombre del producto" required>
-                    <input type="number" id="ventaCant" placeholder="Cantidad" required>
-                    <button type="button" onclick="agregarAlCarrito()">Agregar al carrito</button>
-                </form>
-
-                <h3>Emitir Comprobante</h3>
-
-                <button type="button" onclick="generarFactura()">
-                    Generar Factura SRI
-                </button>
-
-                <h2>Resultado de la Factura:</h2>
-
-                <h3 id="pantallaFactura">
-                    Aún no hay facturas generadas.
-                </h3>
-            </section>
+     </section>
 
         </div>
 

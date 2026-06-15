@@ -1,7 +1,5 @@
 // Usamos const para nuestra "base de datos" porque los arreglos no van a cambiar de tipo,
 // solo les vamos a ir metiendo (push) nueva información adentro.
-const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
-const productos = JSON.parse(localStorage.getItem("productos")) || [];
 const facturas = [];
 // Aquí guardamos lo que el cliente va comprando antes de facturar
 const carrito = []; 
