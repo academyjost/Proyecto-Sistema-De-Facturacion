@@ -4,6 +4,11 @@ const clientesPrueba = [
         nombre: "CYNTHIA",
         apellido: "CACUANGO"
     },
+     {
+        cedula: "1752520799",
+        nombre: "TOMMY",
+        apellido: "FLORES"
+    },
     {
         cedula: "1708669096",
         nombre: "MARIA",
@@ -18,14 +23,24 @@ const clientesPrueba = [
 
 const productosPrueba = [
     {
-        nombre: "CREMA FACIAL",
-        precio: 23,
+        nombre: "CREMA CERAMID",
+        precio: 18,
+        stock: 4
+    },
+    {
+        nombre: "CREMA NIVEA",
+        precio: 8,
         stock: 3
     },
     {
         nombre: "PEDIALITE",
         precio: 4.75,
         stock: 10
+    },
+    {
+        nombre: "ENDEROGERMINA",
+        precio: 3,
+        stock: 25
     },
     {
         nombre: "ASPIRINA",

@@ -10,8 +10,11 @@ function guardarCliente() {
     }
     const nombre = document.getElementById("nombreCli").value;
     const apellido = document.getElementById("apellidoCli").value;
-    
-
+    const existe = clientes.find(c => c.cedula === cedula); //para validar que no se ingresen dos clientes 
+    if(existe){
+    alert("Ya existe un cliente con esa cédula");
+    return;
+    }
     const cliente = { 
         cedula: cedula,
         nombre: nombre,
