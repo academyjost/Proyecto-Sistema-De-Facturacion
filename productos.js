@@ -2,7 +2,7 @@
 // solo les vamos a ir metiendo (push) nueva información adentro.
 let productos =
 JSON.parse(localStorage.getItem("productos")) || [];
-
+let productoEditando = -1;
 
 
 // Función para meter productos a nuestro inventario
@@ -10,17 +10,21 @@ function guardarProducto() {
     const nombre = document.getElementById("nombreProd").value;
     const precio =  Number(document.getElementById("precioProd").value);
     const stock = Number(document.getElementById("stockProd").value);
-    const existe = productos.find(p => p.nombre.toUpperCase() === nombre.toUpperCase());
-    if(existe){
-        alert("Ya existe un producto con ese nombre");
-        return;
-    }
+    
     const producto = { 
         nombre: nombre, 
         precio: precio, 
         stock: stock 
     };
-    productos.push(producto);
+     if(productoEditando == -1){
+
+        productos.push(producto);
+
+    }else{
+
+        productos[productoEditando] = producto;
+        productoEditando = -1;
+    }
 
     //Guardamos lista de productos en el navegador
     localStorage.setItem("productos",JSON.stringify(productos))
@@ -36,16 +40,55 @@ function pintarProductos() {
 
     tabla.innerHTML = "";
 
-    productos.forEach(productos => {
+    productos.forEach((producto, indice) => {
 
         tabla.innerHTML += `
             <tr>
-                <td>${productos.nombre}</td>
-                <td>${productos.precio}</td>
-                <td>${productos.stock}</td>
+                <td>${producto.nombre}</td>
+                <td>${producto.precio}</td>
+                <td>${producto.stock}</td>
+
+                <td>
+                    <button onclick="editarProducto(${indice})">
+                        Editar
+                    </button>
+                </td>
+
+                <td>
+                    <button onclick="eliminarProducto(${indice})">
+                        Eliminar
+                    </button>
+                </td>
             </tr>
         `;
-
     });
+}
+//Creacion de una funcion que me permita Editar el Producto
+function editarProducto(indice){
 
+    document.getElementById("nombreProd").value =
+        productos[indice].nombre;
+
+    document.getElementById("precioProd").value =
+        productos[indice].precio;
+
+    document.getElementById("stockProd").value =
+        productos[indice].stock;
+
+    productoEditando = indice;
+}
+//Creacion de una funcion que me permita Eliminar el Producto
+function eliminarProducto(indice){
+
+    if(confirm("Desea eliminar este producto?")){
+
+        productos.splice(indice,1);
+
+        localStorage.setItem(
+            "productos",
+            JSON.stringify(productos)
+        );
+
+        pintarProductos();
+    }
 }
