@@ -128,5 +128,5 @@ function calificarTest(){
 window.onload = function() {
     pintarClientes();
     pintarProductos();
-    mostrarSeccion();
+    mostrarSeccion("clientes");
 };
