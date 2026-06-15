@@ -126,7 +126,30 @@ function calificarTest(){
 }
 // Esta funcion nos ayuda a que la apgina empieze vacia
 window.onload = function() {
+    cargarDatosPrueba();
     pintarClientes();
     pintarProductos();
     mostrarSeccion("clientes");
 };
+
+function cargarDatosPrueba(){
+
+    if(localStorage.getItem("clientes") == null){
+
+        localStorage.setItem(
+            "clientes",
+            JSON.stringify(clientesPrueba)
+        );
+
+    }
+
+    if(localStorage.getItem("productos") == null){
+
+        localStorage.setItem(
+            "productos",
+            JSON.stringify(productosPrueba)
+        );
+
+    }
+
+}
