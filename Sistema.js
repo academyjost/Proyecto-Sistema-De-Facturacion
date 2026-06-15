@@ -58,9 +58,13 @@ function generarFactura() {
         // Buscamos cuánto cuesta ese producto revisando nuestro inventario
         for (const prod of productos) {
             if (prod.nombre === item.nombre) {
+                if(cantidadAVender > prod.stock){
+            alert("No hay suficiente stock de " + prod.nombre);
+            return;
+        }
                 precioUnitario = prod.precio;
-                // Opcional: Si quisiéramos ser más pros, aquí le restaríamos la cantidad al stock del inventario
-                prod.stockd = prod.stock - cantidadAVender
+                // Opcional: Si quisiéramos ser más pros, aquí le restamos la cantidad al stock del inventario
+                prod.stock = prod.stock - cantidadAVender
             }
         }
 
