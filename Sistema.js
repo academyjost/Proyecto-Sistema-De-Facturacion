@@ -149,14 +149,14 @@ function cargarDatosPrueba(){
 
     let datosCargados = false;
 
-    if(localStorage.getItem("clientes") == null){
-        localStorage.setItem(
+    if(localStorage.getItem("clientes") == null){ //revisa que en local storage del navegador
+        localStorage.setItem(            //no este el clientes lleno de datos
             "clientes",
-            JSON.stringify(clientesPrueba)
+            JSON.stringify(clientesPrueba) //transforma en cadena de texto
         );
-        datosCargados = true;
+        datosCargados = true; //avisa que se guardo informacion nueva
     }
-    if(localStorage.getItem("productos") == null){
+    if(localStorage.getItem("productos") == null){ 
         localStorage.setItem(
             "productos",
             JSON.stringify(productosPrueba)
@@ -164,45 +164,45 @@ function cargarDatosPrueba(){
         datosCargados = true;
     }
     if(datosCargados){
-        location.reload();
+        location.reload(); //funciona para recargar la pagina web
     }
 }
 
 //Function limpiar el local Storage y cargar los datos
-function cargarDatosDemo(){
-    localStorage.clear();
-    localStorage.setItem(
+function cargarDatosDemo(){ 
+    localStorage.clear(); //funcion para limpiar el local storage
+    localStorage.setItem( //guarda la lista de clientes prueba en el almacenamiento
         "clientes",
         JSON.stringify(clientesPrueba)
     );
     localStorage.setItem(
-        "productos",
+        "productos",   //guarda la lista de productos
         JSON.stringify(productosPrueba)
     );
     location.reload();
 }
-//Funcion para cargar Clientes de Venta en seleccion 
-function cargarClientesVenta(){
-    let combo = document.getElementById("ventaCliente");
-    combo.innerHTML = "";
-    clientes.forEach(cliente => {
+//Funcion para cargar Clientes de Venta en seleccion de lista
+function cargarClientesVenta(){  
+    let combo = document.getElementById("ventaCliente"); //aqui se busca en el html el elemento de ventaCliente
+    combo.innerHTML = "";  //limpieza
+    clientes.forEach(cliente => { //rrecorre el arreglo clientes
         combo.innerHTML += `
             <option value="${cliente.cedula}">
                 ${cliente.nombre} ${cliente.apellido}
             </option>
-        `;
+        `; // esto se ingresa para modificar el html desde combo.innerHTML
     });
 }
 
 //funcion para llenar los productos automaticamente 
-function cargarProductosVenta(){
-    let combo = document.getElementById("ventaProd");
-    combo.innerHTML = "";
+function cargarProductosVenta(){ 
+    let combo = document.getElementById("ventaProd"); //Busca el venta prod para modificar
+    combo.innerHTML = ""; //limpia el html
     productos.forEach(producto => {
         combo.innerHTML += `
             <option value="${producto.nombre}">
                 ${producto.nombre} - Stock: ${producto.stock}
             </option>
-        `;
+        `; //modifica el html
     });
 }
