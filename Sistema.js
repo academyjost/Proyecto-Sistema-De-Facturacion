@@ -50,7 +50,7 @@ function generarFactura() {
     const cedulaSeleccionada =
     document.getElementById("ventaCliente").value;
 
-    const clienteActual = clientes.find(c => c.cedula === cedulaSeleccionada);
+    const clienteActual = clientes.find(c => c.cedula === cedulaSeleccionada); //find busca en el arreglo y devuelve la condicion
 
     if (!clienteActual) {
         alert(" Porfavor ingrese un usuario.");
