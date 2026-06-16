@@ -42,6 +42,7 @@ function agregarAlCarrito() {
     });
 
     alert("Producto agregado al carrito");
+    pintarCarrito();
 }
 
 // Aqui se encuentra el como se realizara la impresion de la factura
@@ -204,5 +205,21 @@ function cargarProductosVenta(){
                 ${producto.nombre} - Stock: ${producto.stock}
             </option>
         `; //modifica el html
+    });
+}
+function pintarCarrito(){
+    let tabla = document.getElementById("tablaCarrito");
+    if(!tabla) return;
+
+    tabla.innerHTML = "";
+
+    carrito.forEach(item => { //busca el producto y se adiciona la variable indice que es la posicion del producto en el arreglo
+
+        tabla.innerHTML += `
+            <tr>
+                <td>${producto.producto}</td>
+                <td>${producto.cantidad}</td>
+            </tr>
+        `;
     });
 }
