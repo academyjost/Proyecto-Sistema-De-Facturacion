@@ -217,8 +217,8 @@ function pintarCarrito(){
 
         tabla.innerHTML += `
             <tr>
-                <td>${producto.producto}</td>
-                <td>${producto.cantidad}</td>
+                <td>${item.nombre}</td>
+                <td>${item.cantidad}</td>
             </tr>
         `;
     });
