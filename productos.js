@@ -9,7 +9,15 @@ let productoEditando = -1;
 function guardarProducto() {
     const nombre = document.getElementById("nombreProd").value; //toma texto de campo nombre producto
     const precio =  Number(document.getElementById("precioProd").value);
+    if(precio > 100){
+        alert("Se necesita autorizacion para ingresar un producto de mas de 100$");
+        return;
+    }
     const stock = Number(document.getElementById("stockProd").value);
+    if(stock > 20){
+        alert("Se necesita autorizacion para ingresar mas de 20 productos");
+        return;
+    }
     
     const producto = {  //se crea objeto con datos del producto
         nombre: nombre, 
