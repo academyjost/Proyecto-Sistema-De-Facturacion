@@ -117,6 +117,7 @@ function generarFactura() {
     carrito.length = 0;
     // Pintar los productos para que carguen de nuevo 
     pintarProductos();
+    borrarCarrito();
 }
 
 
@@ -222,4 +223,10 @@ function pintarCarrito(){
             </tr>
         `;
     });
+}
+function borrarCarrito(){
+     let tabla = document.getElementById("tablaCarrito");
+    if(!tabla) return;
+
+    tabla.innerHTML = "";
 }
