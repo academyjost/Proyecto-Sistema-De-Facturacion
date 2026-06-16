@@ -5,13 +5,12 @@ const facturas = [];
 const carrito = []; 
 // Esta variable nos ayuda a que el número de factura aumente solito cada vez
 let numeroComprobante = 1;
-
 //funcion para ocultar secciones
 function ocultarSecciones() {
     const secciones = document.querySelectorAll("section");
     secciones.forEach(sec => sec.classList.remove("activa"));
 }
-
+//funcion para mostrar secciones
 function mostrarSeccion(id) {
     ocultarSecciones();
     let seccion = document.getElementById(id);
@@ -21,11 +20,6 @@ function mostrarSeccion(id) {
         console.error("No se encontró el ID: " + id);
     }
 }
-
-// Función para guardar el cliente (El SRI siempre pide nombre y RUC/Cédula)
-
-
-
 // Función facilita para ir separando lo que el cliente quiere comprar
 function agregarAlCarrito() {
     const nombre = document.getElementById("ventaProd").value;

@@ -10,6 +10,11 @@ const clientesPrueba = [
         apellido: "FLORES"
     },
     {
+        cedula: "1725619785",
+        nombre: "DIANA",
+        apellido: "CACUANGO"
+    },
+    {
         cedula: "1708669096",
         nombre: "MARIA",
         apellido: "PUJOTA"
@@ -41,6 +46,26 @@ const productosPrueba = [
         nombre: "ENDEROGERMINA",
         precio: 3,
         stock: 25
+    },
+    {
+        nombre: "PASTA DE DIENTES",
+        precio: 1,
+        stock: 18
+    },
+    {
+        nombre: "PARACETAMOL",
+        precio: 0.10,
+        stock: 30
+    },
+    {
+        nombre: "CEPILLO DE DIENTES",
+        precio: 1,
+        stock: 10
+    },
+    {
+        nombre: "JABON NIVEA",
+        precio: 2.8,
+        stock: 5
     },
     {
         nombre: "ASPIRINA",
