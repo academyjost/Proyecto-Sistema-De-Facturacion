@@ -1,12 +1,17 @@
 // Usamos const para nuestra "base de datos" porque los arreglos no van a cambiar de tipo,
 // solo les vamos a ir metiendo (push) nueva información adentro.
-let productos =
-JSON.parse(localStorage.getItem("productos")) || [];
+let productos =JSON.parse(localStorage.getItem("productos")) || [];
 let productoEditando = -1;
 
 
 // Función para meter productos a nuestro inventario
 function guardarProducto() {
+    const idInput = document.getElementById("idProd").value.trim();
+    const id = parseInt(idInput, 10);
+    if (!idInput || isNaN(id) || id < 10000 || id > 99999) {
+        alert("El ID debe ser un entero entre 10000 y 99999");
+        return;
+    }
     const nombre = document.getElementById("nombreProd").value; //toma texto de campo nombre producto
     const precio =  Number(document.getElementById("precioProd").value);
     if(precio > 100){
@@ -20,21 +25,33 @@ function guardarProducto() {
     }
     
     const producto = {  //se crea objeto con datos del producto
+        id: id,
         nombre: nombre, 
         precio: precio, 
         stock: stock 
     };
      if(productoEditando == -1){ //en caso de que el producto valga -1 no se esta editando se esta creando un producto nuevo
+        const existeId = productos.some(p => p.id === id);
+        if (existeId) {
+            alert("Error: Ya existe un producto registrado con el ID: " + id);
+            return;
+        }
         productos.push(producto);
 
     }else{
 
         productos[productoEditando] = producto; //sobreescribe el producto viejo con los nuevos datos que estan en la funcion editarProducto  
         productoEditando = -1; //hace que se ingrese nuevo el producto con los nuevos datos
+        document.getElementById("idProd").disabled = false;
     }
 
     //Guardamos lista de productos en el navegador
-    localStorage.setItem("productos",JSON.stringify(productos))
+    localStorage.setItem("productos",JSON.stringify(productos));
+     //limpia los campos del formulario
+    document.getElementById("idProd").value = "";
+    document.getElementById("nombreProd").value = "";
+    document.getElementById("precioProd").value = "";
+    document.getElementById("stockProd").value = "";
     
     pintarProductos();
 }
@@ -51,10 +68,10 @@ function pintarProductos() {
 
         tabla.innerHTML += `
             <tr>
+                <td>${producto.id}</td>    
                 <td>${producto.nombre}</td> 
                 <td>${producto.precio}</td>
                 <td>${producto.stock}</td>
-
                 <td>
                     <button onclick="editarProducto(${indice})">
                         Editar
@@ -72,6 +89,8 @@ function pintarProductos() {
 }
 //Creacion de una funcion que me permita Editar el Producto
 function editarProducto(indice){
+    document.getElementById("idProd").value = productos[indice].id;
+    document.getElementById("idProd").disabled = true; // No permitir cambiar el ID al editar
 
     document.getElementById("nombreProd").value =
         productos[indice].nombre; //busca el nombre puesto en nombre prod
