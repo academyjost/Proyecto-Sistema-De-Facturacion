@@ -256,10 +256,11 @@ function pintarCarrito() {
 
     let total = 0;
 
-    // Recorremos el carrito usando el index (posición)
+    // Recorremos el carrito usando el index para ver si tenemos algo 
     carrito.forEach((item, index) => {
-        
-        // Buscamos el producto en nuestro inventario para sacar su precio
+
+        // Buscamos el producto en nuestro inventario
+        //  para sacar su precio y poder editarlo
         let prodBD = productos.find(p => p.nombre === item.nombre);
         let precio = 0;
         if (prodBD) {
@@ -291,7 +292,7 @@ function pintarCarrito() {
     }
 }
 
-// Función simple para mandar los datos a los recuadros de arriba
+// Función  para mandar los datos a los recuadros de arriba
 function subirParaEditar(index) {
     let item = carrito[index];
 
@@ -306,9 +307,11 @@ function subirParaEditar(index) {
 // Función para quitar un producto del carrito
 function eliminarDelCarrito(index) {
     if (confirm("¿Desea eliminar este producto del carrito?")) {
-        carrito.splice(index, 1); // Quita el elemento en esa posición
+        // Quita el elemento en esa posición
+        carrito.splice(index, 1); 
         
-        // Si estábamos editando justo ese producto, reseteamos la edición
+        // sirve para limpiar el carrito en dado caso estemos editando hace una pregunta
+        //para saber si los datos son correctos
         if (carritoEditando === index) {
             carritoEditando = -1;
         }
