@@ -30,6 +30,13 @@ function agregarAlCarrito() {
         alert("Producto no encontrado");
         return;
     }
+    // Detiene la ejecución para que no se duplique
+    
+    const yaExisteEnCarrito = carrito.some(item => item.nombre === nombre);
+    if (yaExisteEnCarrito) {
+        alert("El producto ya está en el carrito");
+        return; 
+    }
     if(cantidad > producto.stock){
         alert(
             "No hay suficiente stock de " + producto.nombre
