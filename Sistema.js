@@ -22,33 +22,59 @@ function mostrarSeccion(id) {
 }
 // Función facilita para ir separando lo que el cliente quiere comprar
 function agregarAlCarrito() {
-    const nombre = document.getElementById("ventaProd").value;
-    const cantidad = Number(
-        document.getElementById("ventaCant").value);
-    const producto = productos.find(p => p.nombre === nombre);
-    if(!producto){
+    let nombre = document.getElementById("ventaProd").value;
+    let cantidad = Number(document.getElementById("ventaCant").value);
+    
+    let producto = productos.find(p => p.nombre === nombre);
+    if (!producto) {
         alert("Producto no encontrado");
         return;
     }
-    // Detiene la ejecución para que no se duplique
-    
-    const yaExisteEnCarrito = carrito.some(item => item.nombre === nombre);
-    if (yaExisteEnCarrito) {
-        alert("El producto ya está en el carrito");
-        return; 
-    }
-    if(cantidad > producto.stock){
-        alert(
-            "No hay suficiente stock de " + producto.nombre
-        );
+
+    if (cantidad <= 0 || isNaN(cantidad)) {
+        alert("Ingrese una cantidad válida");
         return;
     }
-    carrito.push({
-        nombre: nombre,
-        cantidad: cantidad
-    });
 
-    alert("Producto agregado al carrito");
+    if (cantidad > producto.stock) {
+        alert("No hay suficiente stock de " + producto.nombre);
+        return;
+    }
+
+    // SI ESTAMOS EDITANDO
+    if (carritoEditando != -1) {
+        // Validamos que no se duplique en otra fila y revisamos 
+        let yaExiste = carrito.some((item, idx) => item.nombre === nombre && idx !== carritoEditando);
+        if (yaExiste) {
+            alert("El producto ya está en el carrito en otra fila");
+            return;
+        }
+
+        // Reemplazamos los datos en la posición que guardamos
+        carrito[carritoEditando].nombre = nombre;
+        carrito[carritoEditando].cantidad = cantidad;
+
+        carritoEditando = -1; // Limpiamos la variable de edición
+        alert("Producto modificado correctamente");
+    } 
+    // Si es un producto nuevo revisamos y nos sale un alert si no
+    else {
+        let yaExiste = carrito.some(item => item.nombre === nombre);
+        if (yaExiste) {
+            alert("El producto ya está en el carrito");
+            return;
+        }
+
+        let nuevoItem = {
+            nombre: nombre,
+            cantidad: cantidad
+        };
+        carrito.push(nuevoItem);
+        alert("Producto agregado al carrito");
+    }
+
+    // Limpiamos la caja de cantidad y actualizamos la tabla
+    document.getElementById("ventaCant").value = "";
     pintarCarrito();
 }
 
@@ -108,10 +134,10 @@ function generarFactura() {
         </div>
     `;
 
-    // Lo mostramos en la pantalla inyectando el HTML (ya no usamos innerText, sino innerHTML)
+    // Lo mostramos en la pantalla inyectando el HTML
     document.getElementById("pantallaFactura").innerHTML = htmlFactura;
 
-    // Guardamos la factura completa en nuestra base de datos de facturas
+    // Guardamos la factura
     facturas.push(htmlFactura);
 
     //guardamos los productos actualizados
@@ -215,25 +241,78 @@ function cargarProductosVenta(){
         `; //modifica el html
     });
 }
-function pintarCarrito(){
+//sirve este let para saber que no estamos editando nda
+let carritoEditando = -1;
+
+function pintarCarrito() {
     let tabla = document.getElementById("tablaCarrito");
-    if(!tabla) return;
+    if (!tabla) return;
 
-    tabla.innerHTML = "";
+    // Buscamos el tbody de la tabla
+    let cuerpo = tabla.querySelector("tbody");
 
-    carrito.forEach(item => { //busca el producto y se adiciona la variable indice que es la posicion del producto en el arreglo
+    // Limpiamos la tabla antes de pintar
+    cuerpo.innerHTML = ""; 
 
-        tabla.innerHTML += `
+    let total = 0;
+
+    // Recorremos el carrito usando el index (posición)
+    carrito.forEach((item, index) => {
+        
+        // Buscamos el producto en nuestro inventario para sacar su precio
+        let prodBD = productos.find(p => p.nombre === item.nombre);
+        let precio = 0;
+        if (prodBD) {
+            precio = prodBD.precio;
+        }
+
+        let subtotal = precio * item.cantidad;
+        total = total + subtotal;
+
+        // Concatenamos la fila de forma sencilla como en tus otros archivos
+        cuerpo.innerHTML += `
             <tr>
                 <td>${item.nombre}</td>
                 <td>${item.cantidad}</td>
+                <td>$${precio.toFixed(2)}</td>
+                <td>$${subtotal.toFixed(2)}</td>
+                <td>
+                    <button onclick="subirParaEditar(${index})">Editar</button>
+                    <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+                </td>
             </tr>
         `;
     });
-}
-function borrarCarrito(){
-     let tabla = document.getElementById("tablaCarrito");
-    if(!tabla) return;
 
-    tabla.innerHTML = "";
+    // Actualizamos el total general al final de la tabla
+    let elementoTotal = document.getElementById("totalCarrito");
+    if (elementoTotal) {
+        elementoTotal.textContent = total.toFixed(2);
+    }
+}
+
+// Función simple para mandar los datos a los recuadros de arriba
+function subirParaEditar(index) {
+    let item = carrito[index];
+
+    // Ponemos los valores de la fila en los inputs de arriba
+    document.getElementById("ventaProd").value = item.nombre;
+    document.getElementById("ventaCant").value = item.cantidad;
+
+    // Guardamos la posición en nuestra variable global
+    carritoEditando = index;
+}
+
+// Función para quitar un producto del carrito
+function eliminarDelCarrito(index) {
+    if (confirm("¿Desea eliminar este producto del carrito?")) {
+        carrito.splice(index, 1); // Quita el elemento en esa posición
+        
+        // Si estábamos editando justo ese producto, reseteamos la edición
+        if (carritoEditando === index) {
+            carritoEditando = -1;
+        }
+        
+        pintarCarrito(); // Volvemos a dibujar la tabla actualizada
+    }
 }
